@@ -2,6 +2,8 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+
+//Inertia.jsを利用するための設定
 use Inertia\Inertia;
 
 /*
@@ -15,7 +17,6 @@ use Inertia\Inertia;
 |
 */
 
-//welcomeコンポーネントに以下の値を渡す
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -28,7 +29,5 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-
 
 require __DIR__.'/auth.php';
